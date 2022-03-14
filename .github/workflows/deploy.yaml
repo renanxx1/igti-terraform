@@ -6,33 +6,33 @@ on:
 
 jobs:
   deploy:
-    name: Deploy to s3
+    name: Deploy to Datalake
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+    - uses: actions/checkout@v2
 
-      - name: Set Up Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: "3.9"
-        
-      - name: HashiCorp - Setup Terraform
-        uses: hashicorp/setup-terraform@v1.2.1
-      
-      - name: Configure AWS Credentials
-        uses: actions/setup-aws-credentials@v2
-        with:
-          aws-access-key: "${{secrets.AWS_ACCESS_KEY}}"
-          aws-secret-key: "${{secrets.AWS_SECRET_ACCESS_KEY}}"
-          aws-region: "${{secrets.AWS_DEFAULT_REGION}}"
+    - name: Set up Python 3.8
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
 
-      - name: IaC Apply
-        env: 
-          COMMAND_IAC: terraform
-        run: |
-          cd infrastructure
-          $COMMAND_IAC init
-          $COMMAND_IAC validate
-          $COMMAND_IAC plan
-          $COMMAND_IAC apply -auto-approve
+    - name: HashiCorp - Setup Terraform
+      uses: hashicorp/setup-terraform@v1.2.1
+
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: us-west-2
+
+    - name: IaC Apply
+      env:
+        COMMAND_IAC: terraform
+      run: |
+        cd infrastructure
+        $COMMAND_IAC init
+        $COMMAND_IAC validate
+        $COMMAND_IAC plan
+        $COMMAND_IAC apply -auto-approve

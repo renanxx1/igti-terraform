@@ -1,13 +1,13 @@
 provider "aws" {
-    region     = "${{secrets.AWS_DEFAULT_REGION}}"
+  region = var.aws_region
 }
 
 
-# Arquivo de controller do terraform
+# Centralizar o arquivo de controle de estado do terraform
 terraform {
-    backend "s3" {
-        bucket = "datalake-igti-cloud"
-        key    = "state/terraform.tfstate"
-        region = "us-west-2"
-    }
+  backend "s3" {
+    bucket = "datalake-igti-cloud"
+    key    = "state/terraform.tfstate"
+    region = "us-west-2"
+  }
 }
