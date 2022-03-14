@@ -1,4 +1,4 @@
-resource "aws_s3_bucket" "dl" {
+resource "aws_s3_bucket" "dl_bucket" {
   bucket = "datalake-igti-cloud"
   acl    = "private"
 
