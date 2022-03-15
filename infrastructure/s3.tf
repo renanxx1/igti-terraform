@@ -1,6 +1,6 @@
 resource "aws_s3_bucket" "dl_bucket" {
   bucket = "datalake-igti-cloud"
-  acl    = "private"
+  #acl    = "private"
 
   tags = {
     IES   = "IGTI",
