@@ -22,6 +22,8 @@ enem = (
     .load("s3://datalake-igti-cloud/raw-data/enem")
 )
 
+enem = enem.withColumn("year", enem.NU_ANO)
+
 # Escreve a tabela em staging em formato delta
 print("Writing delta table...")
 (
