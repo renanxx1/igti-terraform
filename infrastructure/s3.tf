@@ -1,7 +1,7 @@
 resource "aws_s3_bucket" "dl" {
   bucket = "datalake-igti-cloud"
   acl    = "private"
-
+  force_destroy = "false"
   tags = {
     IES   = "IGTI",
     CURSO = "EDC"
@@ -20,6 +20,7 @@ resource "aws_s3_bucket" "dl" {
 resource "aws_s3_bucket" "stream" {
   bucket = "igti-edc-streaming-bucket"
   acl    = "private"
+  force_destroy = "false"
 
   tags = {
     IES   = "IGTI",
