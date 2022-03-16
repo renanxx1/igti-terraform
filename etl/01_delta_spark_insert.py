@@ -13,6 +13,7 @@ spark = (SparkSession.builder.appName("DeltaExercise")
 from delta.tables import *
 
 # Leitura de dados
+print("Reading csv...")
 enem = (
     spark.read.format("csv")
     .option("inferSchema", True)
@@ -29,5 +30,5 @@ print("Writing delta table...")
     .mode("overwrite")
     .format("delta")
     .partitionBy("year")
-    .save("s3://datalake-igti-cloud-tf/staging-zone/enem")
+    .save("s3://datalake-igti-cloud/staging-zone/enem")
 )

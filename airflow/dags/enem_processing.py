@@ -37,7 +37,7 @@ def pipeline_enem():
             ServiceRole='EMR_DefaultRole',
             JobFlowRole='EMR_EC2_DefaultRole',
             VisibleToAllUsers=True,
-            LogUri='s3://datalake-igti-cloud-tf/emr-logs',
+            LogUri='s3://datalake-igti-cloud/emr-logs',
             ReleaseLabel='emr-6.3.0',
             Instances={
                 'InstanceGroups': [
@@ -151,7 +151,7 @@ def pipeline_enem():
                                 '--conf', 'spark.sql.catalog.spark_catalog=org.apache.spark.sql.delta.catalog.DeltaCatalog', 
                                 '--master', 'yarn',
                                 '--deploy-mode', 'cluster',
-                                's3://datalake-igti-cloud-tf/emr-code/pyspark/02_delta_spark_upsert.py'
+                                's3://datalake-igti-cloud/emr-code/pyspark/02_delta_spark_upsert.py'
                             ]
                     }
                 }]
