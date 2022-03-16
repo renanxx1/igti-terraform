@@ -1,4 +1,4 @@
-resource "aws_s3_bucket" "dl" {
+/* resource "aws_s3_bucket" "dl" {
   bucket = "datalake-igti-cloud"
   acl    = "private"
   force_destroy = "false"
@@ -15,7 +15,7 @@ resource "aws_s3_bucket" "dl" {
     }
   }
 }
-
+*/
 
 resource "aws_s3_bucket" "stream" {
   bucket = "igti-edc-streaming-bucket"
@@ -34,4 +34,4 @@ resource "aws_s3_bucket" "stream" {
       }
     }
   }
-}
+} 
