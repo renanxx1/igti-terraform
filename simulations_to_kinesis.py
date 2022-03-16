@@ -3,7 +3,7 @@ import json
 from fake_web_events import Simulation
 
 
-client = boto3.client('firehose', region_name='us-east-2')
+client = boto3.client('firehose', region_name='us-west-2')
 
 
 def put_record(event):
