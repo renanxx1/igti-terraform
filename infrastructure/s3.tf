@@ -1,17 +1,36 @@
-resource "aws_s3_bucket" "dl_bucket" {
+resource "aws_s3_bucket" "dl" {
   bucket = "datalake-igti-cloud"
-  #acl    = "private"
+  acl    = "private"
 
   tags = {
     IES   = "IGTI",
     CURSO = "EDC"
   }
 
-  #server_side_encryption_configuration {
-  #  rule {
-  #    apply_server_side_encryption_by_default {
-  #      sse_algorithm = "AES256"
-  #    }
-  #  }
-  #}
+  server_side_encryption_configuration {
+    rule {
+      apply_server_side_encryption_by_default {
+        sse_algorithm = "AES256"
+      }
+    }
+  }
+}
+
+
+resource "aws_s3_bucket" "stream" {
+  bucket = "igti-ney-streaming-bucket"
+  acl    = "private"
+
+  tags = {
+    IES   = "IGTI",
+    CURSO = "EDC"
+  }
+
+  server_side_encryption_configuration {
+    rule {
+      apply_server_side_encryption_by_default {
+        sse_algorithm = "AES256"
+      }
+    }
+  }
 }
